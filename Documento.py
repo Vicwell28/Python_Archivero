@@ -8,6 +8,9 @@ class Documento:
     NombreDocumento = ""
     TextDocumento = ""
 
+    #Propiedad Static
+    DocumentosLista = []
+
     #CONSTRUCTOR
     def __init__(self, id, Nombre, Texto):
         self.idDocumento = id 
@@ -16,15 +19,8 @@ class Documento:
 
     #METODOS - CRUD
     ####################################################CRETE##############################################################
-    
-    # def CreteDocumento(self, *Cajones):
-    #     for i in Cajones:
-    #         self.ListaCajones.append(i)
 
     ####################################################READ##############################################################
-    
-    def ReadArciveroId(id):
-        pass
 
     def ReadDocumentoAll(self):
         print("             {")
@@ -35,12 +31,13 @@ class Documento:
 
     ####################################################UPDATE##############################################################
 
-    def UpdateDocumento(): 
-        pass
+    def UpdateDocumento(self, Nombre, Texto): 
+        self.NombreDocumento = Nombre
+        self.TextDocumento = Texto
 
 
     ####################################################DELETE##############################################################
 
-    def DeleteDocumento(id):
-        pass
+    def DeleteDocumento(self):
+        del self
 

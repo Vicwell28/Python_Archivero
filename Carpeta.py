@@ -6,6 +6,9 @@ class Carpeta:
     NombreCarpeta = ""
     ListaDocumento = []
 
+    #Propiedad Static
+    CarpetasLista = []
+
     #CONSTRUCTOR
     def __init__(self, id, Nombre):
         self.idCarpeta = id
@@ -22,8 +25,18 @@ class Carpeta:
 
     ####################################################READ##############################################################
     
-    def ReadArciveroId(id):
-        pass
+    def ReadDocumentosById(self, id):
+        fContador = 0
+
+        for i in self.ListaDocumento:
+            if i.idDocumento == id:
+                return Contador
+                
+            else:
+                Contador = Contador + 1
+        
+        Contador = -1
+        return Contador
 
     def ReadCarpetaAll(self):
 
@@ -42,9 +55,8 @@ class Carpeta:
 
     ####################################################UPDATE##############################################################
 
-    def UpdateCarpeta(): 
-        pass
-
+    def UpdateCarpeta(self, Nombre):
+        self.NombreCarpeta = Nombre 
 
     ####################################################DELETE##############################################################
 

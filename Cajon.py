@@ -6,11 +6,16 @@ class Cajon:
     SeccionCajon = ""
     ListaCarpetas = []
 
+    #Propiedad Static
+    CajonesLista = []
+
     #CONSTRUCTOR
     def __init__(self, id, Seccion):
         self.idCajon = id
         self.SeccionCajon = Seccion
         self.ListaCarpetas = []
+    
+
 
     #METODOS - CRUD
     ####################################################CRETE##############################################################
@@ -21,8 +26,18 @@ class Cajon:
 
     ####################################################READ##############################################################
     
-    def ReadCajonId(id):
-        pass
+    def ReadCarpetasById(self ,id):
+        fContador = 0
+
+        for i in self.ListaCarpetas:
+            if i.idCarpeta == id:
+                return Contador
+                
+            else:
+                Contador = Contador + 1
+        
+        Contador = -1
+        return Contador
 
     def ReadCajonAll(self):
         print("     {")
@@ -36,12 +51,12 @@ class Cajon:
 
     ####################################################UPDATE##############################################################
 
-    def UpdateCajon(): 
-        pass
+    def UpdateCajon(self, Seccion): 
+        self.SeccionCajon = Seccion
 
 
     ####################################################DELETE##############################################################
 
-    def DeleteCajon(id):
+    def DeleteCajon(self):
         pass
 
