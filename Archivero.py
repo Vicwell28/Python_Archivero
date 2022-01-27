@@ -2,12 +2,12 @@ from Cajon import *
 
 class Archivero: 
     pass 
-    #PROPIEDADES
+    #PROPIEDADES DE INSTANCIA
     idArchivero = ""
     NombreArchivero = ""
     ListaCajones = []
 
-    #Propiedad Static
+    #PROPIEDAD STATIC
     ArchiverosLista = []
 
     #CONSTRUCTOR
@@ -24,13 +24,15 @@ class Archivero:
             self.ListaCajones.append(i)
 
     ####################################################READ##############################################################
-    def ReadCajonById(self, id):
+
+    #METODO READ STATICO BY ID
+    @classmethod
+    def ReadArchiverosById(cls, id):
         Contador = 0
 
-        for i in self.ListaCajones:
-            if i.idCajon == id:
+        for i in cls.ArchiverosLista:
+            if i.idArchivero == id:
                 return Contador
-                
             else:
                 Contador = Contador + 1
         
@@ -38,7 +40,7 @@ class Archivero:
         return Contador
         
         
-    
+    #METODO DE INSTANCIA MUESTRA TODO
     def ReadArciveroAll(self):
         print("\"id\": "+str(self.idArchivero)+",")
         print("\"Nombre\": \""+str(self.NombreArchivero)+"\",")

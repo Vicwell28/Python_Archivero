@@ -1,12 +1,12 @@
 from Documento import *
 
 class Carpeta: 
-    #PROPIEDADES
+    #PROPIEDADES DE INSTANCIA
     idCarpeta = 0
     NombreCarpeta = ""
     ListaDocumento = []
 
-    #Propiedad Static
+    #PROPIEDAD STATIC
     CarpetasLista = []
 
     #CONSTRUCTOR
@@ -25,13 +25,13 @@ class Carpeta:
 
     ####################################################READ##############################################################
     
-    def ReadDocumentosById(self, id):
-        fContador = 0
+    @classmethod
+    def ReadCarpetasById(cls, id):
+        Contador = 0
 
-        for i in self.ListaDocumento:
-            if i.idDocumento == id:
+        for i in cls.CarpetasLista:
+            if i.idCarpeta == id:
                 return Contador
-                
             else:
                 Contador = Contador + 1
         

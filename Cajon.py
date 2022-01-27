@@ -1,12 +1,12 @@
 from Carpeta import *
 
 class Cajon: 
-    #PROPIEDADES
+    #PROPIEDADES DE INSTANCIA 
     idCajon = 0
     SeccionCajon = ""
     ListaCarpetas = []
 
-    #Propiedad Static
+    #PROPIEDAD STATIC
     CajonesLista = []
 
     #CONSTRUCTOR
@@ -26,19 +26,21 @@ class Cajon:
 
     ####################################################READ##############################################################
     
-    def ReadCarpetasById(self ,id):
-        fContador = 0
+    #METODO STATICO READ BY ID
+    @classmethod
+    def ReadCarpetasById(cls, id):
+        Contador = 0
 
-        for i in self.ListaCarpetas:
-            if i.idCarpeta == id:
+        for i in cls.CajonesLista:
+            if i.idCajon == id:
                 return Contador
-                
             else:
                 Contador = Contador + 1
         
         Contador = -1
         return Contador
 
+    #METODO DE INSTANCIA READ ALL
     def ReadCajonAll(self):
         print("     {")
         print("     \"id\": ", self.idCajon,",")

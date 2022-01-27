@@ -3,12 +3,12 @@ from typing import Text
 
 
 class Documento:
-    #PROPIEDADES
+    #PROPIEDADES DE INSTANCIA
     idDocumento = 0
     NombreDocumento = ""
     TextDocumento = ""
 
-    #Propiedad Static
+    #PROPIEDAD STATIC
     DocumentosLista = []
 
     #CONSTRUCTOR
@@ -21,6 +21,20 @@ class Documento:
     ####################################################CRETE##############################################################
 
     ####################################################READ##############################################################
+    @classmethod
+    def ReadDocumentosById(cls, id):
+        Contador = 0
+
+        for i in cls.DocumentosLista:
+            if i.idDocumento == id:
+                return Contador
+            else:
+                Contador = Contador + 1
+        
+        Contador = -1
+        return Contador
+
+
 
     def ReadDocumentoAll(self):
         print("             {")

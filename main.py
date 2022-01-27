@@ -78,3 +78,5 @@ ArchiveroUno.DeleteArchivero()
 # ArchiveroUno.DeleteArchivero()
 
 print(ArchiveroUno)
+Archivero.ArchiverosLista.append(ArchiveroUno)
+print(Archivero.ArchiverosLista[:])
