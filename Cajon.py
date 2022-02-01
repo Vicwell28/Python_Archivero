@@ -14,8 +14,6 @@ class Cajon:
         self.idCajon = id
         self.SeccionCajon = Seccion
         self.ListaCarpetas = []
-    
-
 
     #METODOS - CRUD
     ####################################################CRETE##############################################################
@@ -28,7 +26,7 @@ class Cajon:
     
     #METODO STATICO READ BY ID
     @classmethod
-    def ReadCarpetasById(cls, id):
+    def ReadCajonById(cls, id):
         Contador = 0
 
         for i in cls.CajonesLista:
@@ -43,19 +41,28 @@ class Cajon:
     #METODO DE INSTANCIA READ ALL
     def ReadCajonAll(self):
         print("     {")
-        print("     \"id\": ", self.idCajon,",")
-        print("     \"Seccion\": \"", self.SeccionCajon,"\",")
+        print("     \"id\": "+str(self.idCajon)+"")
+        print("     \"Seccion Caja\": \""+str(self.SeccionCajon)+"\",")
         print("     \"Carpetas\": [", )
 
         for j in self.ListaCarpetas:
             
             j.ReadCarpetaAll()
 
+    def ReadOnlyCajonById(self):
+        print("             {")
+        print("             \"id\": "+str(self.idCajon)+"")
+        print("             \"Seccion Caja\": \""+str(self.SeccionCajon)+"\",")
+        print("             \"Carpetas\": []", )
+        print("             }")
+
+
+
+
     ####################################################UPDATE##############################################################
 
     def UpdateCajon(self, Seccion): 
         self.SeccionCajon = Seccion
-
 
     ####################################################DELETE##############################################################
 

@@ -1,7 +1,6 @@
 
 from typing import Text
 
-
 class Documento:
     #PROPIEDADES DE INSTANCIA
     idDocumento = 0
@@ -34,14 +33,20 @@ class Documento:
         Contador = -1
         return Contador
 
-
-
     def ReadDocumentoAll(self):
         print("             {")
-        print("             \"id\": \"", self.idDocumento,"\",")
-        print("             \"Nombre\": \"", self.NombreDocumento,"\",")
-        print("             \"Texto\": \"", self.TextDocumento,"\"")
+        print("             \"id\": "+str(self.idDocumento)+"")
+        print("             \"Nombre\": \""+str(self.NombreDocumento)+"\",")
+        print("             \"Texto\": \""+str(self.TextDocumento)+"\"")
         print("             },")
+
+    
+    def ReadOnlyDocumentoById(self):
+        print("             {")
+        print("             \"id\": "+str(self.idDocumento)+"")
+        print("             \"Nombre\": \""+str(self.NombreDocumento)+"\",")
+        print("             \"Texto\": \""+str(self.TextDocumento)+"\"")
+        print("             }")
 
     ####################################################UPDATE##############################################################
 
@@ -49,9 +54,13 @@ class Documento:
         self.NombreDocumento = Nombre
         self.TextDocumento = Texto
 
-
     ####################################################DELETE##############################################################
 
-    def DeleteDocumento(self):
-        del self
-
+    @classmethod
+    def DeleteDocumento(cls, idA):
+        ObjetoArchivero = cls.ReadDocumentosById(idA)
+        if ObjetoArchivero > -1:
+            cls.DocumentosLista[ObjetoArchivero].ReadOnlyArchiveroById()
+            cls.DocumentosLista.pop(ObjetoArchivero)
+        else:
+            print(f"No Exite el Archivero con Id: {idA}")  

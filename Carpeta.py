@@ -15,7 +15,6 @@ class Carpeta:
         self.NombreCarpeta = Nombre
         self.ListaDocumento = []
 
-
     #METODOS - CRUD
     ####################################################CRETE##############################################################
     
@@ -41,8 +40,8 @@ class Carpeta:
     def ReadCarpetaAll(self):
 
         print("         {")
-        print("         \"id\":",self.idCarpeta,",")
-        print("         \"Nombre\": \"",self.NombreCarpeta,"\",")
+        print("         \"id\": "+str(self.idCarpeta)+"")
+        print("         \"Seccion Caja\": \""+str(self.NombreCarpeta)+"\",")
         print("         \"Documentos\": [")
 
         for y in self.ListaDocumento:
@@ -53,6 +52,14 @@ class Carpeta:
 
         print("         },")
 
+    def ReadOnlyCarpetaById(self):
+        print("             {")
+        print("             \"id\": "+str(self.idCarpeta)+"")
+        print("             \"Seccion Caja\": \""+str(self.NombreCarpeta)+"\",")
+        print("             \"Cajones\": []", )
+        print("             }")
+
+
     ####################################################UPDATE##############################################################
 
     def UpdateCarpeta(self, Nombre):
@@ -62,4 +69,3 @@ class Carpeta:
 
     def DeleteCarpeta(id):
         pass
-

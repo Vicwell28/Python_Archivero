@@ -6,15 +6,12 @@ from Color import *
 C = Color()
 
 #AQUI COMIENZA LA MAGIA
-
 Salir = False
-
 while Salir != True:
 
     print(C.OK +"¿Que Quieres Hacer?")
     print("1)CRATE \n2)READ \n3)UPDATE \n4)DELETE \n5)SALIR")
     
-
     try: 
         Opcion = int(input(C.RESET+C.WARNING+"Respuesta: "+C.RESET+C.OK))
     except: 
@@ -49,15 +46,14 @@ while Salir != True:
                 print("")
                 print(C.RESET+C.FAIL+"DAR DE ALTA UN ARCHIVERO"+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+                
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+                    
                     try: 
                         OC = input(C.RESET+C.FAIL+"¿Quieres Crear Un ARCHIVERO?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
 
                         try: 
@@ -71,9 +67,29 @@ while Salir != True:
 
                         elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
                             print("VAMOS A AÑADIR CAJONES A EL ARCHIVERO")
+                            print("¿A Cual Archivero Quieres Agreagar Cajones?")
+                            idA = int(input("Respuesta: "))
+                            ObjetoArchivero = Archivero.ReadArchiverosById(idA)
+                            if ObjetoArchivero > -1:
+                                print("¿Que Cajones Quieres Agregar?")
+                                ArrayCajones = input("Respuesta: ")
+                                for i in ArrayCajones:
+                                    ObjetoCajon = Cajon.ReadCajonById(int(i))
+                                    if ObjetoCajon > -1:
+                                        Archivero.ArchiverosLista[ObjetoArchivero].ListaCajones.append(Cajon.CajonesLista[ObjetoCajon])
+                                        print(f"Se Agrego El Cajon Con Id: {i}")
+                                    else: 
+                                        print(f"No Se Agrego El Cajon Con Id: {i} Por Que No Exite")
+                            else:
+                                print(f"No Exite el Archivero con Id: {idA} {ObjetoArchivero}")    
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De ARCHIVERO Nuevo")
+                        print("CREAR UN ARCHIVERO NUEVO")                       
+                        idA = int(input("id: "))
+                        NombreA =input("Nombre: ")
+                        NombreA = Archivero(idA, NombreA)
+                        Archivero.ArchiverosLista.append(NombreA)
+                        print(Archivero.ArchiverosLista[len(Archivero.ArchiverosLista)-1].ReadOnlyArchiveroById())
                         SalirClientes = False
 
             ##################################################################################################################
@@ -83,15 +99,14 @@ while Salir != True:
                 print("")
                 print(C.RESET+C.FAIL+"DAR DE ALTA UN CAJON"+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+
                     try: 
                         OC = input(C.RESET+C.FAIL+"¿Quieres Crear Un CAJON?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
 
                         try: 
@@ -105,11 +120,30 @@ while Salir != True:
 
                         elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
                             print("VAMOS A AÑADIR CARPETAS A LOS CAJONES")
+                            print("¿A Cual Cajon Quires Agreagar Carpetas?")
+                            idA = int(input("Respuesta: "))
+                            ObjetoCajon = Cajon.ReadCajonById(idA)
+                            if ObjetoCajon > -1:
+                                print("¿Que Carpetas Quieres Agregar?")
+                                ArrayCarpetas = input("Respuesta: ")
+                                for i in ArrayCarpetas:
+                                    ObjetoCarpeta = Carpeta.ReadCarpetasById(int(i))
+                                    if ObjetoCarpeta > -1:
+                                        Cajon.CajonesLista[ObjetoCajon].ListaCarpetas.append(Carpeta.CarpetasLista[ObjetoCarpeta])
+                                        print(f"Se Agrego La Carpeta Con Id: {i}")
+                                    else: 
+                                        print(f"No Se Agrego La Carpeta Con Id: {i} Por Que No Exite")
+                            else:
+                                print(f"No Exite el Cajon con Id: {idA}")    
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De CAJON Nuevo")
+                        print("CREAR UN CAJON NUEVO")                       
+                        idA = int(input("id: "))
+                        NombreA =input("Seccion: ")
+                        NombreA = Cajon(idA, NombreA)
+                        Cajon.CajonesLista.append(NombreA)
+                        print(Cajon.CajonesLista[len(Cajon.CajonesLista)-1].ReadOnlyCajonById())
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   DAR ALTA CARPETA
@@ -118,15 +152,14 @@ while Salir != True:
                 print("")
                 print(C.RESET+C.FAIL+"DAR DE ALTA UNA CARPETA"+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+                    
                     try: 
                         OC = input(C.RESET+C.FAIL+"¿Quieres Crear Un CARPETA?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
 
                         try: 
@@ -139,12 +172,31 @@ while Salir != True:
                             SalirClientes = True
 
                         elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
-                            print("VAMOS A AÑADIR DOCUMENTOS A EL CARPETA")
+                            print("VAMOS A AÑADIR DOCUMENTOS A CARPETAS")
+                            print("¿A Cual Carpeta Quieres Agreagar Documentos?")
+                            idA = int(input("Respuesta: "))
+                            ObjetoCarpeta = Carpeta.ReadCarpetasById(idA)
+                            if ObjetoCarpeta > -1:
+                                print("¿Que Documentos Quieres Agregar?")
+                                ArrayDocumentos = input("Respuesta: ")
+                                for i in ArrayDocumentos:
+                                    ObjetoDocumento = Documento.ReadDocumentosById(int(i))
+                                    if ObjetoDocumento > -1:
+                                        Carpeta.CarpetasLista[ObjetoCarpeta].ListaDocumento.append(Documento.DocumentosLista[ObjetoDocumento])
+                                        print(f"Se Agrego El Cajon Con Id: {i}")
+                                    else: 
+                                        print(f"No Se Agrego El Cajon Con Id: {i} Por Que No Exite")
+                            else:
+                                print(f"No Exite el Archivero con Id: {idA}")    
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De CARPETA Nuevo")
+                        print("CREAR UNA CARPETA NUEVA")                       
+                        idA = int(input("id: "))
+                        NombreA =input("Nombre: ")
+                        NombreA = Carpeta(idA, NombreA)
+                        Carpeta.CarpetasLista.append(NombreA)
+                        print(Carpeta.CarpetasLista[len(Carpeta.CarpetasLista)-1].ReadOnlyCarpetaById())
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   DAR ALTA DOCUMENTO
@@ -153,23 +205,27 @@ while Salir != True:
                 print("")
                 print(C.RESET+C.FAIL+"DAR DE ALTA UN DOCUMENTO"+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+
                     try: 
                         OC = input(C.RESET+C.FAIL+"¿Quieres Crear Un DOCUMENTO?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
                         print(C.RESET+C.FAIL+"No Quieres Crear Un DOCUMENTO. Saliste De Crear DOCUMENTO"+C.RESET+C.OK)
                         SalirClientes = True
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De ARCHIVERO Nuevo")
+                        print("CREAR UN ARCHIVERO NUEVO")                       
+                        idA = int(input("id: "))
+                        NombreA =input("Nombre: ")
+                        Texto = input("Text: ")
+                        NombreA = Documento(idA, NombreA, Texto)
+                        Documento.DocumentosLista.append(NombreA)
+                        print(Documento.DocumentosLista[len(Documento.DocumentosLista)-1].ReadOnlyDocumentoById())
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   SALIR
@@ -223,15 +279,14 @@ while Salir != True:
                 print("")
                 print(C.RESET+C.FAIL+"Mostrar Informacion De Archivero "+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+
                     try: 
                         OC = input(C.RESET+C.FAIL+"¿Quiere Mostrar Solo Informacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
 
                         try: 
@@ -244,10 +299,23 @@ while Salir != True:
                             SalirClientes = True
 
                         elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
-                            print("ESTAREMOS MOSTRANDO TODA LA INFROAMCION DEL ARCHIVERO")
+                            print("¿De Que Archivero Quires Mostrar Su Informacion?")
+                            ObjetoArchivero = int(input("Respuesta: "))
+                            ObjetoArchivero = Archivero.ReadArchiverosById(ObjetoArchivero)
+                            if ObjetoArchivero > -1:
+                                Archivero.ArchiverosLista[ObjetoArchivero].ReadArciveroAll()
+                            else:
+                                print(f"El Archivero Con id: {ObjetoArchivero} No Se Encontro")
+                            SalirClientes = False
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("ESTAREMOS MOSTRARNDO SOLO INFORMACION DEL ARCHIVERO")
+                        print("¿De Que Archivero Quires Mostrar Su Informacion?")
+                        ObjetoArchivero = int(input("Respuesta: "))
+                        ObjetoArchivero = Archivero.ReadArchiverosById(ObjetoArchivero)
+                        if ObjetoArchivero > -1:
+                            Archivero.ArchiverosLista[ObjetoArchivero].ReadOnlyArchiveroById()
+                        else:
+                            print(f"El Archivero Con id: {ObjetoArchivero} No Se Encontro")
                         SalirClientes = False
 
             ##################################################################################################################
@@ -255,21 +323,20 @@ while Salir != True:
             ##################################################################################################################
             elif OpcionCreate == 2: 
                 print("")
-                print(C.RESET+C.FAIL+"Mostrar Informacion De Archivero "+C.RESET+C.OK)
+                print(C.RESET+C.FAIL+"Mostrar Informacion De Cajon "+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+
                     try: 
-                        OC = input(C.RESET+C.FAIL+"¿Quiere Mostrar Solo Informacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
+                        OC = input(C.RESET+C.FAIL+"¿Quiere Mostrar Solo Informacion Del Cajon?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
 
                         try: 
-                            OCP = input(C.RESET+C.FAIL+"¿Quires Mostrar Toda la Infromacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
+                            OCP = input(C.RESET+C.FAIL+"¿Quires Mostrar Toda la Infromacion Del Cajon?[s/n]: "+C.RESET+C.OK).lower()
                         except: 
                             OCP = "n"
 
@@ -278,45 +345,69 @@ while Salir != True:
                             SalirClientes = True
 
                         elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
-                            print("ESTAREMOS MOSTRANDO TODA LA INFROAMCION DEL ARCHIVERO")
+                            print("¿De Que Archivero Quires Mostrar Su Informacion?")
+                            ObjetoCajon = int(input("Respuesta: "))
+                            ObjetoCajon = Cajon.ReadCajonById(ObjetoCajon)
+                            if ObjetoCajon > -1:
+                                Cajon.CajonesLista[ObjetoCajon].ReadCajonAll()
+                            else:
+                                print(f"El Cajon Con id: {ObjetoCajon} No Se Encontro")
+                            SalirClientes = False
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("ESTAREMOS MOSTRARNDO SOLO INFORMACION DEL ARCHIVERO")
+                        print("¿De Que Archivero Quires Mostrar Su Informacion?")
+                        ObjetoCajon = int(input("Respuesta: "))
+                        ObjetoCajon = Cajon.ReadCajonById(ObjetoCajon)
+                        if ObjetoCajon > -1:
+                            Cajon.CajonesLista[ObjetoCajon].ReadOnlyCajonById()
+                        else:
+                            print(f"El Cajon Con id: {ObjetoCajon} No Se Encontro")
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   DAR MOSTRAR CARPETA
             ##################################################################################################################
             elif OpcionCreate == 3: 
                 print("")
-                print(C.RESET+C.FAIL+"Mostrar Informacion De Archivero "+C.RESET+C.OK)
+                print(C.RESET+C.FAIL+"Mostrar Informacion De Carpeta "+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+
                     try: 
-                        OC = input(C.RESET+C.FAIL+"¿Quiere Mostrar Solo Informacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
+                        OC = input(C.RESET+C.FAIL+"¿Quiere Mostrar Solo Informacion De La Carpeta?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
 
                         try: 
-                            OCP = input(C.RESET+C.FAIL+"¿Quires Mostrar Toda la Infromacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
+                            OCP = input(C.RESET+C.FAIL+"¿Quires Mostrar Toda la Infromacion De La Carpeta?[s/n]: "+C.RESET+C.OK).lower()
                         except: 
                             OCP = "n"
 
                         if OCP == "n" or OCP == "no": 
-                            print(C.RESET+C.FAIL+"No Quieres Crear Un ARCHIVERO. Saliste De Crear Archivero"+C.RESET+C.OK)
+                            print(C.RESET+C.FAIL+"No Quieres Ver Toda La Informacion De La Capreta"+C.RESET+C.OK)
                             SalirClientes = True
 
                         elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
-                            print("ESTAREMOS MOSTRANDO TODA LA INFROAMCION DEL ARCHIVERO")
+                            print("¿De Que Carpeta Quires Mostrar Su Informacion?")
+                            ObjetoCarpeta = int(input("Respuesta: "))
+                            ObjetoCarpeta = Carpeta.ReadCarpetasById(ObjetoCarpeta)
+                            if ObjetoCarpeta > -1:
+                                Archivero.ArchiverosLista[ObjetoCarpeta].ReadCarpetaAll()
+                            else:
+                                print(f"El Archivero Con id: {ObjetoCarpeta} No Se Encontro")
+                            SalirClientes = False
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("ESTAREMOS MOSTRARNDO SOLO INFORMACION DEL ARCHIVERO")
+                        print("¿De Que Carpeta Quires Mostrar Su Informacion?")
+                        ObjetoCarpeta = int(input("Respuesta: "))
+                        ObjetoCarpeta = Carpeta.ReadCarpetasById(ObjetoCarpeta)
+                        if ObjetoCarpeta > -1:
+                            Archivero.ArchiverosLista[ObjetoCarpeta].ReadOnlyCarpetaById()
+                        else:
+                            print(f"El Archivero Con id: {ObjetoCarpeta} No Se Encontro")
                         SalirClientes = False
 
 
@@ -327,33 +418,27 @@ while Salir != True:
                 print("")
                 print(C.RESET+C.FAIL+"Mostrar Informacion De Archivero "+C.RESET+C.OK)
                 SalirClientes = False
-                #PREGUNAT SI QUIERE CREAR UN  NUEVO OBJETO O AGREGARLE PROPIEDADES A UN OBJETO
+
                 while SalirClientes != True:
-                    #AQUI VAMOS A EMPEZAR A CREARE LOS CLIENTES PREGUNTANDO EN CADA INSTANCIACION SI QUIERE VOLVER A CREARE OTRO O SALIR
+
                     try: 
                         OC = input(C.RESET+C.FAIL+"¿Quiere Mostrar Solo Informacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
                     except: 
                         OC = "n"
                     
-                    #AQUI ES DONDE NOS VAMOS A TRAER LOS METODO PARA CREAR LOS ARCHVIERO Y COLOCARLOS EN LA ARCHIVEROLISTA STATIC
                     if OC == "n" or OC == "no": 
-
-                        try: 
-                            OCP = input(C.RESET+C.FAIL+"¿Quires Mostrar Toda la Infromacion Del Archivero?[s/n]: "+C.RESET+C.OK).lower()
-                        except: 
-                            OCP = "n"
-
-                        if OCP == "n" or OCP == "no": 
-                            print(C.RESET+C.FAIL+"No Quieres Crear Un ARCHIVERO. Saliste De Crear Archivero"+C.RESET+C.OK)
-                            SalirClientes = True
-
-                        elif OCP == "y" or OCP == "yes" or OCP == "si" or OCP == "s":
-                            print("ESTAREMOS MOSTRANDO TODA LA INFROAMCION DEL ARCHIVERO")
+                        print("No Quiers Mostarar Informacion Sobre Documento. Saliste.")
+                        SalirClientes = True
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("ESTAREMOS MOSTRARNDO SOLO INFORMACION DEL ARCHIVERO")
+                        print("¿De Que Archivero Quires Mostrar Su Informacion?")
+                        ObjetoDocumenot = int(input("Respuesta: "))
+                        ObjetoDocumenot = Documento.ReadDocumentosById(ObjetoDocumenot)
+                        if ObjetoDocumenot > -1:
+                            Documento.ReadDocumentosById[ObjetoDocumenot].ReadOnlyDocumentoById()
+                        else:
+                            print(f"El Archivero Con id: {ObjetoDocumenot} No Se Encontro")
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   SALIR
@@ -391,7 +476,7 @@ while Salir != True:
         print(C.RESET+C.FAIL+"CREAT"+C.RESET+C.OK)
 
         while CreateSalir != True:
-            print("")
+            print("") 
             print("¿Que Quieres ACTUALIZAR?")
             print("1)ARCHIVERO \n2)CAJON \n3)CARPETA \n4)DOCUMETNO \n5)SALIR")
 
@@ -419,7 +504,15 @@ while Salir != True:
                         print("No Quieres Acualizar Un ARCHIVERO")
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Actualizar Un Archivero, Mediante ID")
+                        print("¿Que Archivero Quieres Actualizar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoArchivero = Archivero.ReadArchiverosById(idA)
+                        if ObjetoArchivero > -1:
+                            newNombre = input("Agregar Nuevo Nombre: ")
+                            Archivero.ArchiverosLista[ObjetoArchivero].NombreArchivero = newNombre
+                            Archivero.ArchiverosLista[ObjetoArchivero].ReadOnlyArchiveroById() 
+                        else:
+                            print(f"No Exite el Archivero con Id: {idA}")  
                         SalirClientes = False
 
             ##################################################################################################################
@@ -441,9 +534,16 @@ while Salir != True:
                         print("No Quieres Acualizar Un CAJON")
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Actualizar Un CAJON, Mediante ID")
+                        print("¿Que Cajon Quieres Actualizar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoCajon = Cajon.CajonesLista(idA)
+                        if ObjetoCajon > -1:
+                            newNombre = input("Agregar Nueva Seccion: ")
+                            Cajon.CajonesLista[ObjetoCajon].SeccionCajon = newNombre
+                            Cajon.CajonesLista[ObjetoCajon].ReadOnlyArchiveroById() 
+                        else:
+                            print(f"No Exite el Cajon con Id: {idA}")  
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   DAR ACTUALIZAR CARPETA
@@ -464,9 +564,16 @@ while Salir != True:
                         print("No Quieres Acualizar Un CARPETA")
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Actualizar Un CARPETA, Mediante ID")
+                        print("¿Que Archivero Quieres Actualizar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoCarpeta = Carpeta.ReadCarpetasById(idA)
+                        if ObjetoCarpeta > -1:
+                            newNombre = input("Agregar Nuevo Nombre: ")
+                            Carpeta.CarpetasLista[ObjetoCarpeta].NombreCarpeta = newNombre
+                            Carpeta.CarpetasLista[ObjetoCarpeta].ReadOnlyCarpetaById() 
+                        else:
+                            print(f"No Exite La Carpeta con Id: {idA}")  
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   DAR ACTUALIZAR DOCUMENTO
@@ -487,9 +594,17 @@ while Salir != True:
                         print("No Quieres Acualizar Un DOCUMENTO")
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Actualizar Un Archivero, Mediante ID")
+                        print("¿Que Archivero Quieres Actualizar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoDocumento = Documento.ReadDocumentosById(idA)
+                        if ObjetoDocumento > -1:
+                            newNombre = input("Agregar Nuevo Nombre: ")
+                            newTexto = input("Agregar Nuevo Texto: ")
+                            Documento.DocumentosLista[ObjetoDocumento].UpdateDocumento(newNombre, newTexto)
+                            Documento.DocumentosLista[ObjetoDocumento].ReadOnlyArchiveroById() 
+                        else:
+                            print(f"No Exite el Archivero con Id: {idA}")  
                         SalirClientes = False
-
 
             ##################################################################################################################
             #   SALIR
@@ -525,7 +640,7 @@ while Salir != True:
     elif Opcion == 4: 
         CreateSalir = False
         print("")
-        print(C.RESET+C.FAIL+"CREAT"+C.RESET+C.OK)
+        print(C.RESET+C.FAIL+"DELETE"+C.RESET+C.OK)
 
         while CreateSalir != True:
             print("")
@@ -556,7 +671,14 @@ while Salir != True:
                         SalirClientes = True
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De ARCHIVERO Nuevo")
+                        print("¿Que Archivero Quieres Eliminar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoArchivero = Archivero.ReadArchiverosById(idA)
+                        if ObjetoArchivero > -1:
+                            Archivero.ArchiverosLista[ObjetoArchivero].ReadOnlyArchiveroById()
+                            Archivero.ArchiverosLista.pop(ObjetoArchivero)
+                        else:
+                            print(f"No Exite el Archivero con Id: {idA}")  
                         SalirClientes = False
 
             ##################################################################################################################
@@ -578,7 +700,14 @@ while Salir != True:
                         SalirClientes = True
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De CAJON Nuevo")
+                        print("¿Que Cajon Quieres Eliminar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoCajon = Cajon.ReadCajonById(idA)
+                        if ObjetoCajon > -1:
+                            Cajon.CajonesLista[ObjetoCajon].ReadOnlyArchiveroById()
+                            Cajon.CajonesLista.pop(ObjetoCajon)
+                        else:
+                            print(f"No Exite el Archivero con Id: {idA}")  
                         SalirClientes = False
 
 
@@ -601,7 +730,14 @@ while Salir != True:
                         SalirClientes = True
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De CARPETA Nuevo")
+                        print("¿Que Archivero Quieres Eliminar?")
+                        ida = int(input("Buscar Id: "))
+                        ObjetoCarpeta = Carpeta.ReadCarpetasById(idA)
+                        if ObjetoCarpeta > -1:
+                            Carpeta.CarpetasLista[ObjetoCarpeta].ReadOnlyArchiveroById()
+                            Carpeta.CarpetasListaCarpeta.CarpetasLista.pop(ObjetoCarpeta)
+                        else:
+                            print(f"No Exite el Archivero con Id: {idA}")  
                         SalirClientes = False
 
 
@@ -624,7 +760,9 @@ while Salir != True:
                         SalirClientes = True
 
                     elif OC == "y" or OC == "yes" or OC == "si" or OC == "s":
-                        print("Creacion De DOCUMENTO Nuevo")
+                        print("¿Que Archivero Quieres Eliminar?")
+                        ida = int(input("Buscar Id: "))
+                        Documento.DeleteDocumento(ida)
                         SalirClientes = False
 
 
@@ -683,77 +821,3 @@ while Salir != True:
     else:
         Salir == False
 # #
-
-
-
-
-
-
-# ArchiveroUno = Archivero(1, "Universidad Tecnologica de Torreon")
-# # print(type(ArchiveroUno))
-
-# Cajon1 = Cajon(1, "A")
-# Cajon2 = Cajon(2, "B")
-# # print(type(Cajon1))
-# # print(type(Cajon2))
-
-# # Cajon3 = Cajon(3, "C")
-
-# Carpeta1 = Carpeta(1, "Carpeta Uno")
-# Carpeta2 = Carpeta(2, "Carpeta Dos")
-# Carpeta3 = Carpeta(3, "Carpeta Tres")
-# # print(type(Carpeta1))
-# # print(type(Carpeta2))
-# # print(type(Carpeta3))
-
-# # Carpeta4 = Carpeta(4, "Carpeta Cuatro")
-# # Carpeta5 = Carpeta(5, "Carpeta Cinco")
-# # Carpeta6 = Carpeta(6, "Carpeta Seis")
-
-# Archivo1 = Documento(1, "Documento Uno", "Texto" )
-# Archivo2 = Documento(2, "Documento Uno", "Texto" )
-# Archivo3 = Documento(3, "Documento Uno", "Texto" )
-# Archivo4 = Documento(4, "Documento Uno", "Texto" )
-# # print(type(Archivo1))
-# # print(type(Archivo2))
-# # print(type(Archivo3))
-# Archivo1.DeleteDocumento()
-# # print(type(Archivo4))
-# # Archivo5 = Documento(5, "Documento Uno", "Texto" )
-# # Archivo6 = Documento(6, "Documento Uno", "Texto" )
-# # Archivo7 = Documento(7, "Documento Uno", "Texto" )
-# # Archivo8 = Documento(8, "Documento Uno", "Texto" )
-# # Archivo9 = Documento(9, "Documento Uno", "Texto" )
-# # Archivo10 = Documento(10, "Documento Uno", "Texto" )
-# # Archivo11 = Documento(11, "Documento Uno", "Texto" )
-# # Archivo12 = Documento(12, "Documento Uno", "Texto" )
-
-# ArchiveroUno.CreateAddCajones(Cajon1, Cajon2)
-# # print("Cajones De Archivero: ",ArchiveroUno.ListaCajones[:])
-
-# Cajon1.CreteAddCarpetas(Carpeta1)
-# Cajon2.CreteAddCarpetas(Carpeta2, Carpeta3)
-# # print("Carpetas Del Cajon Uno",Cajon1.ListaCarpetas[:])
-# # print("Carpetas Del Cajon Dos",Cajon2.ListaCarpetas[:])
-# # Cajon3.CreteAddCarpetas(Carpeta4, Carpeta5, Carpeta6)
-
-# Carpeta1.CreteAddDocumentos(Archivo1)
-# Carpeta2.CreteAddDocumentos(Archivo2, Archivo4)
-# # print("Documentos De La Carpeta Uno",Carpeta1.ListaDocumento[:])
-# # print("Documentos De La Carpeta Uno",Carpeta2.ListaDocumento[:])
-# # Carpeta3.CreteAddDocumentos(Archivo2, Archivo4)
-# # Carpeta4.CreteAddDocumentos(Archivo5, Archivo6)
-# # Carpeta5.CreteAddDocumentos(Archivo7, Archivo8, Archivo9)
-# # Carpeta6.CreteAddDocumentos(Archivo10, Archivo11, Archivo12)
-# ArchiveroUno.ReadArciveroAll()
-# print(ArchiveroUno.ReadCajonById(2))
-# ArchiveroUno.DeleteArchivero()
-# # ArchiveroUno.ReadArciveroAll()
-# # ArchiveroUno.UpdateArchivero()
-# # ArchiveroUno.UpdateArchivero()
-
-# # ArchiveroUno.DeleteArchivero()
-
-# print(ArchiveroUno)
-# Archivero.ArchiverosLista.append(ArchiveroUno)
-# print(Archivero.ArchiverosLista[:])
