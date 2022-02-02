@@ -21,8 +21,9 @@ class Documento:
 
     ####################################################READ##############################################################
     @classmethod
-    def ReadDocumentosById(cls, id):
+    def BucarIdListaDocumentos(cls, id):
         Contador = 0
+        id = int(id)
 
         for i in cls.DocumentosLista:
             if i.idDocumento == id:
@@ -40,7 +41,6 @@ class Documento:
         print("             \"Texto\": \""+str(self.TextDocumento)+"\"")
         print("             },")
 
-    
     def ReadOnlyDocumentoById(self):
         print("             {")
         print("             \"id\": "+str(self.idDocumento)+"")
@@ -48,6 +48,15 @@ class Documento:
         print("             \"Texto\": \""+str(self.TextDocumento)+"\"")
         print("             }")
 
+    @classmethod
+    def MostrarTodosLosDocumentos(cls):
+        for i in cls.DocumentosLista:
+            print("{")
+            print(i.idDocumento)
+            print(i.NombreDocumento)
+            print(i.TextDocumento)
+            print("}")
+            
     ####################################################UPDATE##############################################################
 
     def UpdateDocumento(self, Nombre, Texto): 

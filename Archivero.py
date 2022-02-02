@@ -45,7 +45,6 @@ class Archivero:
     def ReadArciveroAll(self):
         print("\"id\": "+str(self.idArchivero)+",")
         print("\"Nombre Archivero\": \""+str(self.NombreArchivero)+"\",")
-
         print("\"Cajones\": [", )
 
         for i in self.ListaCajones:
@@ -53,11 +52,10 @@ class Archivero:
             i.ReadCajonAll()
            
             print("     ]")
-
             print("     },")
-
         print("     ]")
 
+    #METODO DE INSTANCIA MUESTRA SOLO PROPIEDADES DEL OBJETO
     def ReadOnlyArchiveroById(self):
         print("             {")
         print("             \"id\": "+str(self.idArchivero)+"")
@@ -65,25 +63,22 @@ class Archivero:
         print("             \"Cajones\": []", )
         print("             }")
 
-
     ####################################################UPDATE##############################################################
 
     def UpdateArchivero(self, Nombre): 
-        # print("Modificar Nombre Del Archivero")
-        # Nombrex = input("Nuevo Nombre: ") 
         self.NombreArchivero = Nombre
 
     ####################################################DELETE##############################################################
 
     def DeleteArchivero(self):
-        del(self) 
+        del(self)
 
-    def Eliminar(self,NombreCajon):  
+    def DeleteCajon(self,NombreCajon):  
         self.ListaCajones.remove(NombreCajon)
         print(self.ListaCajones[:])
 
     @classmethod
-    def DeleteDocumento(cls, idA):
+    def DeleteArchivero(cls, idA):
         ObjetoArchivero = cls.ReadDocumentosById(idA)
         if ObjetoArchivero > -1:
             cls.DocumentosLista[ObjetoArchivero].ReadOnlyArchiveroById()

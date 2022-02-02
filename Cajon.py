@@ -52,12 +52,9 @@ class Cajon:
     def ReadOnlyCajonById(self):
         print("             {")
         print("             \"id\": "+str(self.idCajon)+"")
-        print("             \"Seccion Caja\": \""+str(self.SeccionCajon)+"\",")
+        print("             \"Seccion Cajon\": \""+str(self.SeccionCajon)+"\",")
         print("             \"Carpetas\": []", )
         print("             }")
-
-
-
 
     ####################################################UPDATE##############################################################
 

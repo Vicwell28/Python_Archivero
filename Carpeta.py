@@ -55,11 +55,10 @@ class Carpeta:
     def ReadOnlyCarpetaById(self):
         print("             {")
         print("             \"id\": "+str(self.idCarpeta)+"")
-        print("             \"Seccion Caja\": \""+str(self.NombreCarpeta)+"\",")
+        print("             \"Nombre Carpeta\": \""+str(self.NombreCarpeta)+"\",")
         print("             \"Cajones\": []", )
         print("             }")
-
-
+        
     ####################################################UPDATE##############################################################
 
     def UpdateCarpeta(self, Nombre):
