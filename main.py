@@ -38,7 +38,7 @@ while SalirMenuCrud != True:
 
                 OpcionCreateArticulo = False
                 while OpcionCreateArticulo != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Crear Nuevo Archivero \n2)Agregar Cajones A Archivero \n3)SALIR")
                     try:
                         RespuestaOpcionCreateArticulo = int(input("Respuesta: "))        
                     except:
@@ -46,17 +46,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionCreateArticulo == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idArchivero = int(input("id:"))
+                        Nombre = input("Nombre Archivero: ")
+                        Archivero.CreateArchivero(idArchivero, Nombre)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateArticulo == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        print("¿A Que Archivero Quieres Agregar Cajones?")
+                        idArchivero = int(input("id: "))
+                        Archivero.CrateAddCajones(idArchivero)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateArticulo == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionCreateArticulo == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del CREATE : ARTICULO?", end=" ")
                         try:
@@ -82,7 +82,7 @@ while SalirMenuCrud != True:
 
                 OpcionCreateCajon = False
                 while OpcionCreateCajon != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Crear Un Nuevo Cajon \n2)Agreagar Carpetas A Cajon \n3)SALIR")
                     try:
                         RespuestaOpcionCreateCajon = int(input("Respuesta: "))        
                     except:
@@ -90,17 +90,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionCreateCajon == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idCajon = int(input("id: "))
+                        Seccion = input("Seccion Cajon")
+                        Cajon.CreateCajon(idCajon, Seccion)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateCajon == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        print("¿A Que Cajon Quieres Agregar Carpetas?")
+                        idCajon = int(input("id: "))
+                        Cajon.CrateAddCarpetas(idCajon)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateCajon == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionCreateCajon == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del CREATE : CAJON?", end=" ")
                         try:
@@ -126,7 +126,7 @@ while SalirMenuCrud != True:
 
                 OpcionCreateCarpeta = False
                 while OpcionCreateCarpeta != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Crear Nueva Carpeta \n2)Agregar Documento A Carpeta \n3)SALIR")
                     try:
                         RespuestaOpcionCreateCarpeta = int(input("Respuesta: "))        
                     except:
@@ -134,17 +134,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionCreateCarpeta == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idCarpeta = int(input("id: "))
+                        Nombre = input("Nombre: ") 
+                        Carpeta.CreateCarpeta(idCarpeta, Nombre)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateCarpeta == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        print("¿A Que Carpeta Quieres Agregar Documetnos?")
+                        idCarpeta = int(input("id: "))
+                        Carpeta.CrateAddDocumentos(idCarpeta)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateCarpeta == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionCreateCarpeta == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del CREATE : CARPETA?", end=" ")
                         try:
@@ -170,7 +170,7 @@ while SalirMenuCrud != True:
 
                 OpcionCreateDocumento = False
                 while OpcionCreateDocumento != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Crear Un Nuevo Documento \n2)SALIR")
                     try:
                         RespuestaOpcionCreateDocumento = int(input("Respuesta: "))        
                     except:
@@ -181,14 +181,6 @@ while SalirMenuCrud != True:
                         print("Opcion Uno")
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionCreateDocumento == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionCreateDocumento == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionCreateDocumento == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del CREATE : DOCUMENTO?", end=" ")
                         try:
@@ -243,7 +235,7 @@ while SalirMenuCrud != True:
 
                 OpcionReadArticulo = False
                 while OpcionReadArticulo != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Mostrar Solo Valores Propios \n2)Mostrar Valores All \n3)Mostrar Todos Los Articulso \n4)SALIR")
                     try:
                         RespuestaOpcionReadArticulo = int(input("Respuesta: "))        
                     except:
@@ -251,15 +243,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionReadArticulo == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idArchivero = int(input("id Archivero: "))
+                        Archivero.ReadCajon(idArchivero, 1)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadArticulo == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        idArchivero = int(input("id Archivero: "))
+                        Archivero.ReadCajon(idArchivero, 2)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadArticulo == 3:
                         clearConsole()
-                        print("Opcion Tres")
+                        Archivero.MostrarTodasLosArchvios()
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadArticulo == 4:
                         clearConsole()
@@ -287,7 +281,7 @@ while SalirMenuCrud != True:
 
                 OpcionReadCajon = False
                 while OpcionReadCajon != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Mostrar Solo Valores Propios \n2)Mostrar Valores All \n3)Mostrar Todos Los Articulso \n4)SALIR")
                     try:
                         RespuestaOpcionReadCajon = int(input("Respuesta: "))        
                     except:
@@ -295,15 +289,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionReadCajon == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idCajon = int(input("id Cajon: "))
+                        Cajon.ReadCajon(idCajon, 1)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadCajon == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        idCajon = int(input("id Cajon: "))
+                        Cajon.ReadCajon(idCajon, 2)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadCajon == 3:
                         clearConsole()
-                        print("Opcion Tres")
+                        Cajon.MostrarTodasLosCajones()
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadCajon == 4:
                         clearConsole()
@@ -331,7 +327,7 @@ while SalirMenuCrud != True:
 
                 OpcionReadCarpeta = False
                 while OpcionReadCarpeta != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Mostrar Solo Valores Propios \n2)Mostrar Valores All \n3)Mostrar Todos Los Articulso \n4)SALIR")
                     try:
                         RespuestaOpcionReadCarpeta = int(input("Respuesta: "))        
                     except:
@@ -339,15 +335,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionReadCarpeta == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idCarpeta = int(input("id Carpeta: "))
+                        Carpeta.ReadCajon(idCarpeta, 1)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadCarpeta == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        idCarpeta = int(input("id Carpeta: "))
+                        Carpeta.ReadCajon(idCarpeta, 2)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadCarpeta == 3:
                         clearConsole()
-                        print("Opcion Tres")
+                        Carpeta.MostrarTodasLasCarpetas()
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadCarpeta == 4:
                         clearConsole()
@@ -375,7 +373,7 @@ while SalirMenuCrud != True:
 
                 OpcionReadDocumento = False
                 while OpcionReadDocumento != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Mostrar Solo Valores Propios \n2)Mostrar Valores All \n3)Mostrar Todos Los Articulso \n4)SALIR")
                     try:
                         RespuestaOpcionReadDocumento = int(input("Respuesta: "))        
                     except:
@@ -383,15 +381,17 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionReadDocumento == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        idDocumento = int(input("id Documento: "))
+                        Documento.ReadDocumento(idDocumento, 1)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadDocumento == 2:
                         clearConsole()
-                        print("Opcion Dos")
+                        idDocumento = int(input("id Documento: "))
+                        Documento.ReadDocumento(idDocumento, 2)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadDocumento == 3:
                         clearConsole()
-                        print("Opcion Tres")
+                        Documento.MostrarTodosLosDocumentos()
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionReadDocumento == 4:
                         clearConsole()
@@ -449,7 +449,7 @@ while SalirMenuCrud != True:
 
                 OpcionUpdateArticulo = False
                 while OpcionUpdateArticulo != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Actualizar Articulo \n2)SALIR")
                     try:
                         RespuestaOpcionUpdateArticulo = int(input("Respuesta: "))        
                     except:
@@ -457,17 +457,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionUpdateArticulo == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Archivero quieres Actualizar by id?")
+                        idArchivero = int(input("id Archivero: "))
+                        Archivero.UpdateArchiveroById(idArchivero)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionUpdateArticulo == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateArticulo == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateArticulo == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del UPDATE : CAJON?", end=" ")
                         try:
@@ -493,7 +487,7 @@ while SalirMenuCrud != True:
 
                 OpcionUpdateCajon = False
                 while OpcionUpdateCajon != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Actualizar Articulo \n2)SALIR")
                     try:
                         RespuestaOpcionUpdateCajon = int(input("Respuesta: "))        
                     except:
@@ -501,17 +495,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionUpdateCajon == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Cajon quieres Actualizar by id?")
+                        idCajon = int(input("id Archivero: "))
+                        Cajon.UpdateCajonById(idCajon)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionUpdateCajon == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateCajon == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateCajon == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del UPDATE : CAJON?", end=" ")
                         try:
@@ -537,7 +525,7 @@ while SalirMenuCrud != True:
 
                 OpcionUpdateCarpeta = False
                 while OpcionUpdateCarpeta != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Actualizar Articulo \n2)SALIR")
                     try:
                         RespuestaOpcionUpdateCarpeta = int(input("Respuesta: "))        
                     except:
@@ -545,17 +533,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionUpdateCarpeta == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Carpeta quieres Actualizar by id?")
+                        idCarpeta = int(input("id Archivero: "))
+                        Carpeta.UpdateCarpetaById(idCarpeta)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionUpdateCarpeta == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateCarpeta == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateCarpeta == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del UPDATE : CARPETA?", end=" ")
                         try:
@@ -581,7 +563,7 @@ while SalirMenuCrud != True:
 
                 OpcionUpdateDocumento = False
                 while OpcionUpdateDocumento != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Actualizar Articulo \n2)SALIR")
                     try:
                         RespuestaOpcionUpdateDocumento = int(input("Respuesta: "))        
                     except:
@@ -589,17 +571,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionUpdateDocumento == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Documento quieres Actualizar by id?")
+                        idDocumento = int(input("id Archivero: "))
+                        Documento.UpdateDocumentoById(idDocumento)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionUpdateDocumento == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateDocumento == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionUpdateDocumento == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del UPDATE : DOCUMENTO?", end=" ")
                         try:
@@ -655,7 +631,7 @@ while SalirMenuCrud != True:
 
                 OpcionDeleteArticulo = False
                 while OpcionDeleteArticulo != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Eliminar Archivero \n2)SALIR")
                     try:
                         RespuestaOpcionDeleteArticulo = int(input("Respuesta: "))        
                     except:
@@ -663,17 +639,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionDeleteArticulo == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Archivero Quieres Eliminar?")
+                        idArchivero = int(input("id Archivero"))
+                        Archivero.DeleteArchivero(idArchivero)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionDeleteArticulo == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteArticulo == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteArticulo == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del DELETE : CAJON?", end=" ")
                         try:
@@ -699,7 +669,7 @@ while SalirMenuCrud != True:
 
                 OpcionDeleteCajon = False
                 while OpcionDeleteCajon != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Eliminar Archivero \n2)SALIR")
                     try:
                         RespuestaOpcionDeleteCajon = int(input("Respuesta: "))        
                     except:
@@ -707,17 +677,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionDeleteCajon == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Cajon Quieres Eliminar?")
+                        idCajon = int(input("id Cajon: "))
+                        Cajon.DeleteCajon(idCajon)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionDeleteCajon == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteCajon == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteCajon == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del DELETE : CAJON?", end=" ")
                         try:
@@ -743,7 +707,7 @@ while SalirMenuCrud != True:
 
                 OpcionDeleteCarpeta = False
                 while OpcionDeleteCarpeta != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Eliminar Archivero \n2)SALIR")
                     try:
                         RespuestaOpcionDeleteCarpeta = int(input("Respuesta: "))        
                     except:
@@ -751,17 +715,11 @@ while SalirMenuCrud != True:
                     ############################# OPCIONES ############################
                     if RespuestaOpcionDeleteCarpeta == 1: 
                         clearConsole()
-                        print("Opcion Uno")
+                        print("¿Que Carpeta Quieres Eliminar?")
+                        idCarpeta = int(input("id Carpeta: "))
+                        Carpeta.DeleteCarpeta(idCarpeta)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionDeleteCarpeta == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteCarpeta == 3:
-                        clearConsole()
-                        print("Opcion Tres")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteCarpeta == 4:
                         clearConsole()
                         print(C.RESET+C.FAIL+"¿Seguro Que Quieres Salir Del DELETE : CARPETA?", end=" ")
                         try:
@@ -787,23 +745,17 @@ while SalirMenuCrud != True:
 
                 OpcionDeleteDocumento = False
                 while OpcionDeleteDocumento != True:
-                    print(C.RESET+C.OK+"1)OpcionUno \n2)OpcionDos \n3)OpcionTres \n4)SALIR")
+                    print(C.RESET+C.OK+"1)Eliminar Archivero \n2)SALIR")
                     try:
                         RespuestaOpcionDeleteDocumento = int(input("Respuesta: "))        
                     except:
                         RespuestaOpcionDeleteDocumento = 0
                     ############################# OPCIONES ############################
-                    if RespuestaOpcionDeleteDocumento == 1: 
+                    if RespuestaOpcionDeleteDocumento == 2: 
                         clearConsole()
-                        print("Opcion Uno")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteDocumento == 2:
-                        clearConsole()
-                        print("Opcion Dos")
-                    ############################# OPCIONES ############################
-                    elif RespuestaOpcionDeleteDocumento == 3:
-                        clearConsole()
-                        print("Opcion Tres")
+                        print("¿Que Documento Quieres Eliminar?")
+                        idDocumento = int(input("id Documento: "))
+                        Documento.DeleteDocumento(idDocumento)
                     ############################# OPCIONES ############################
                     elif RespuestaOpcionDeleteDocumento == 4:
                         clearConsole()

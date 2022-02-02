@@ -40,6 +40,26 @@ class Documento:
         Contador = -1
         return Contador
 
+    @classmethod
+    def ReadDocumento(cls, IdDocumento, Opcion): 
+        if  IdDocumento > -1:
+            if Opcion == 2: 
+                POS = cls.BuscarDocumentoById(IdDocumento)
+                if  POS > -1: 
+                    cls.TablaDocumento[POS].ReadDocumentoAll()
+                else: 
+                    print("No Se Encontro El Documento Con Id: {IdDocumento}")
+            elif Opcion == 1:
+                POS = cls.BuscarCarpetaById(IdDocumento)
+                if  POS > -1: 
+                    cls.TablaDocumento[POS].ReadOnlyDocumentoById()
+                else: 
+                    print("No Se Encontro EL Documento Con Id: {IdDocumento}")
+        else: 
+            print("No Se Puede Leer Carpeta Con Un id Negativo")
+
+
+
     def ReadDocumentoAll(self):
         print("             {")
         print("             \"id\": "+str(self.idDocumento)+"")

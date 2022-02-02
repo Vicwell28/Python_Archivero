@@ -17,7 +17,7 @@ class Cajon:
 
     #METODOS - CRUD
     ####################################################CRETE##############################################################
-    def CreteAddCarpetas(self, *Carpetas):
+    def CreteCarpetas(self, *Carpetas):
         for i in Carpetas:
             self.ListaCarpetas.append(i)
 
@@ -63,6 +63,24 @@ class Cajon:
         
         Contador = -1
         return Contador
+
+    @classmethod
+    def ReadCajon(cls, IdCajon, Opcion): 
+        if  IdCajon > -1:
+            if Opcion == 2: 
+                POS = cls.BuscarCajonById(IdCajon)
+                if  POS > -1: 
+                    cls.TablaCajones[POS].ReadCajonAll()
+                else: 
+                    print("No Se Encontro El Cajon Con Id: {IdCajon}")
+            elif Opcion == 1:
+                POS = cls.BuscarCajonById(IdCajon)
+                if  POS > -1: 
+                    cls.TablaCajones[POS].ReadOnlyCajonById()
+                else: 
+                    print("No Se Encontro El Cajon Con Id: {IdCajon}")
+        else: 
+            print("No Se Puede Leer Cajon Con Un id Negativo")
 
     #METODO DE INSTANCIA MUESTRA TODO
     def ReadCajonAll(self):
@@ -114,7 +132,7 @@ class Cajon:
 
     ####################################################DELETE##############################################################
     @classmethod
-    def DeleteArchivero(cls, idCajon):
+    def DeleteCajon(cls, idCajon):
         if idCajon > -1: 
             ObjetoCajon = cls.ReadOnlyCajonById(idCajon)
             if ObjetoCajon > -1:

@@ -62,6 +62,24 @@ class Archivero:
         
         Contador = -1
         return Contador
+
+    @classmethod
+    def ReadCajon(cls, IdArchivero, Opcion): 
+        if  IdArchivero > -1:
+            if Opcion == 2: 
+                POS = cls.BuscarArchiveroById(IdArchivero)
+                if  POS > -1: 
+                    cls.TablaCajones[POS].ReadArciveroAll()
+                else: 
+                    print("No Se Encontro El Archivero Con Id: {IdArchivero}")
+            elif Opcion == 1:
+                POS = cls.BuscarArchiveroById(IdArchivero)
+                if  POS > -1: 
+                    cls.TablaCajones[POS].ReadOnlyArchiveroById()
+                else: 
+                    print("No Se Encontro El Archivero Con Id: {IdArchivero}")
+        else: 
+            print("No Se Puede Leer Archivero Con Un id Negativo")
         
     #METODO DE INSTANCIA MUESTRA TODO
     def ReadArciveroAll(self):
@@ -86,7 +104,7 @@ class Archivero:
         print("             }")
 
     @classmethod
-    def MostrarTodasLosCajones(cls):
+    def MostrarTodasLosArchvios(cls):
         for i in cls.TablaCajones:
             print("{")
             print("\"id\": "+str(i.idArchivero)+"")

@@ -69,6 +69,25 @@ class Carpeta:
         Contador = -1
         return Contador
 
+    @classmethod
+    def ReadCajon(cls, IdCarpeta, Opcion): 
+        if  IdCarpeta > -1:
+            if Opcion == 2: 
+                POS = cls.BuscarCarpetaById(IdCarpeta)
+                if  POS > -1: 
+                    cls.TablaCarpeta[POS].ReadCarpetaAll()
+                else: 
+                    print("No Se Encontro La Carpeta Con Id: {IdCarpeta}")
+            elif Opcion == 1:
+                POS = cls.BuscarCarpetaById(IdCarpeta)
+                if  POS > -1: 
+                    cls.TablaCarpeta[POS].ReadOnlyCarpetaById()
+                else: 
+                    print("No Se Encontro La Carpeta Con Id: {IdCarpeta}")
+        else: 
+            print("No Se Puede Leer Carpeta Con Un id Negativo")
+
+
     def ReadCarpetaAll(self):
         print("         {")
         print("         \"id\": "+str(self.idCarpeta)+"")
