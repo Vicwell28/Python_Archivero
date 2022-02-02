@@ -26,7 +26,7 @@ class Cajon:
     
     #METODO STATICO READ BY ID
     @classmethod
-    def ReadCajonById(cls, id):
+    def BuscarCajonById(cls, id):
         Contador = 0
 
         for i in cls.CajonesLista:

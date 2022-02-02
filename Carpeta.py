@@ -25,7 +25,7 @@ class Carpeta:
     ####################################################READ##############################################################
     
     @classmethod
-    def ReadCarpetasById(cls, id):
+    def BuscarCarpetaById(cls, id):
         Contador = 0
 
         for i in cls.CarpetasLista:

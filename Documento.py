@@ -21,9 +21,8 @@ class Documento:
 
     ####################################################READ##############################################################
     @classmethod
-    def BucarIdListaDocumentos(cls, id):
+    def BuscarDocumentoById(cls, id):
         Contador = 0
-        id = int(id)
 
         for i in cls.DocumentosLista:
             if i.idDocumento == id:
