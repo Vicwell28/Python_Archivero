@@ -105,7 +105,7 @@ class Archivero:
 
     @classmethod
     def MostrarTodasLosArchvios(cls):
-        for i in cls.TablaCajones:
+        for i in cls.TablaArchivero:
             print("{")
             print("\"id\": "+str(i.idArchivero)+"")
             print("\"Nombre Archivero\": \""+str(i.NombreArchivero)+"\",")
